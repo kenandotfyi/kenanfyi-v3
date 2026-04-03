@@ -8,6 +8,7 @@ import keystatic from '@keystatic/astro';
 
 
 export default defineConfig({
+  site: 'https://preview.akinci.fyi',
   output: 'server',
   adapter: node({ mode: 'standalone' }),
   integrations: [markdoc(), react(), keystatic()],
