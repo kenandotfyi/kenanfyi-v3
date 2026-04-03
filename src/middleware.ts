@@ -10,12 +10,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
     const forwardedProto = context.request.headers.get('x-forwarded-proto')
 
     if (forwardedHost && forwardedProto) {
-      const correctedUrl = new URL(context.url)
+      const correctedUrl = new URL(context.request.url)
       correctedUrl.protocol = forwardedProto
       correctedUrl.host = forwardedHost
 
-      context.url.protocol = forwardedProto
-      context.url.host = forwardedHost
+      context.request = new Request(correctedUrl.toString(), context.request)
     }
   }
 
