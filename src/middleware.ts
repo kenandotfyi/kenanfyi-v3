@@ -14,15 +14,8 @@ export const onRequest = defineMiddleware(async (context, next) => {
       correctedUrl.protocol = forwardedProto
       correctedUrl.host = forwardedHost
 
-      const newRequest = new Request(correctedUrl.toString(), {
-        method: context.request.method,
-        headers: context.request.headers,
-        body: context.request.body,
-        // @ts-ignore
-        duplex: 'half',
-      })
-
-      return fetch(newRequest)
+      context.url.protocol = forwardedProto
+      context.url.host = forwardedHost
     }
   }
 
