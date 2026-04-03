@@ -13,6 +13,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
       const correctedUrl = new URL(context.request.url)
       correctedUrl.protocol = forwardedProto
       correctedUrl.host = forwardedHost
+      correctedUrl.port = ''
 
       context.request = new Request(correctedUrl.toString(), context.request)
     }
