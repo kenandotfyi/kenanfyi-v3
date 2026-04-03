@@ -3,7 +3,7 @@ import { config, collection, fields } from '@keystatic/core'
 export default config({
   storage: {
     kind: 'github',
-    repo: 'yourusername/kenan-fyi',
+    repo: 'kenandotfyi/kenanfyi-v3',
   },
   collections: {
     posts: collection({
